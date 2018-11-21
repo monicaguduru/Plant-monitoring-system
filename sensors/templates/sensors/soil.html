@@ -1,0 +1,213 @@
+<html>
+<head>
+<style>
+body{
+  background: #000000;
+   /*background-image: url("images/bg_bg.jpg");*/
+    background-size: 1800px 1200px;
+  /*background: 1.jpeg;*/
+  height: 100%;
+}
+
+#container_1{
+  margin: 0 auto;
+  padding-top: 2%;
+}
+
+    #container_2{
+      margin: 0 auto;
+      padding-top: 2%;
+    }
+</style>
+<script type="text/javascript">
+
+function start() {
+    call_1();
+    call_2();
+  }
+
+function call_1(){
+
+  var count=0;
+var a=[0,0,0,0,0,0,0,0,0,0];
+    {% for i in plant1 %}
+        a[count]={{i.soilmoisture}}
+        count++;
+    {% endfor %}
+    var dps_1=[Number(a[0]),Number(a[1]),Number(a[2]),Number(a[3]),Number(a[4]),Number(a[5]),Number(a[6]),Number(a[7]),Number(a[8]),Number(a[9])];
+    //var dps_1=[10, 20, 50, 40, 20, 10, 25];
+
+$(function () { 
+  Highcharts.setOptions({
+    colors: ['#67BCE6'],
+    chart: {
+        style: {
+            fontFamily: 'sans-serif',
+            color: '#fff'
+        }
+    }
+});  
+  $('#container_1').highcharts({
+        chart: {
+            type: 'line',
+            backgroundColor: '#000000'//color behnd the graph
+        },
+        title: {
+            text: 'PLANT 1',
+            style: {  
+              color: '#fff'
+            }
+        },
+        xAxis: {
+            tickWidth: 0,
+            labels: {
+              style: {
+                  color: '#fff',
+                 }
+              },
+            categories: ['1', '2', '3', '4', '5', '6', '7']
+        },
+        yAxis: {
+           gridLineWidth: .5,
+         // gridLineDashStyle: 'dash',
+          gridLineColor: 'black',
+           title: {
+                text: '',
+                style: {
+                  color: '#fff',
+                 }
+            },
+            labels: {
+              formatter: function() {
+                        return Highcharts.numberFormat(this.value, 0, '', ',');
+                    },
+              style: {
+                  color: '#fff',
+                 }
+              }
+
+            },
+        legend: {
+            enabled: false,
+        },
+        credits: {
+            enabled: false
+        },
+        tooltip: {
+           valuePrefix: '',
+           valueSuffix:''
+        },
+        plotOptions: {
+          column: {
+            borderRadius: 2,
+             pointPadding: 0,
+            groupPadding: 0.1
+            } 
+        },
+        series: [{
+            name: 'SOIL MOISTURE',
+            data: dps_1
+        }]
+    });
+});}
+
+
+</script>
+
+    <script type="text/javascript">
+    function call_2(){
+      var count=0;
+var a=[0,0,0,0,0,0,0,0,0,0];
+    {% for i in plant2 %}
+        a[count]={{i.soilmoisture}}
+        count++;
+    {% endfor %}
+    var dps_2=[Number(a[0]),Number(a[1]),Number(a[2]),Number(a[3]),Number(a[4]),Number(a[5]),Number(a[6]),Number(a[7]),Number(a[8]),Number(a[9])];
+    //var dps_2=[10, 20, 50, 40, 20, 10, 25];
+    $(function () { 
+      Highcharts.setOptions({
+        colors: ['#67BCE6'],
+        chart: {
+            style: {
+                fontFamily: 'sans-serif',
+                color: '#fff'
+            }
+        }
+    });  
+      $('#container_2').highcharts({
+            chart: {
+                type: 'line',
+                backgroundColor: '#000000'//color behnd the graph
+            },
+            title: {
+                text: 'PLANT 2',
+                style: {  
+                  color: '#fff'
+                }
+            },
+            xAxis: {
+                tickWidth: 0,
+                labels: {
+                  style: {
+                      color: '#fff',
+                     }
+                  },
+                categories: ['1', '2', '3', '4', '5', '6', '7']
+            },
+            yAxis: {
+               gridLineWidth: .5,
+             // gridLineDashStyle: 'dash',
+              gridLineColor: 'black',
+               title: {
+                    text: '',
+                    style: {
+                      color: '#fff',
+                     }
+                },
+                labels: {
+                  formatter: function() {
+                            return Highcharts.numberFormat(this.value, 0, '', ',');
+                        },
+                  style: {
+                      color: '#fff',
+                     }
+                  }
+    
+                },
+            legend: {
+                enabled: false,
+            },
+            credits: {
+                enabled: false
+            },
+            tooltip: {
+               valuePrefix: '',
+               valueSuffix:''
+            },
+            plotOptions: {
+              column: {
+                borderRadius: 2,
+                 pointPadding: 0,
+                groupPadding: 0.1
+                } 
+            },
+            series: [{
+                name: 'SOIL MOISTURE',
+                data: dps_2
+            }]
+        });
+    });}
+    
+    
+    </script>
+    
+</head>
+<body onload="start();">
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.8.2/jquery.min.js"></script>
+<script src="https://code.highcharts.com/highcharts.js"></script>
+<center><h2 style="color:#FFF">SOIL MOISTURE</h2></center>
+<div id="container_1" style="width:50%; height:400px;"></div>
+<div id="container_2" style="width:50%; height:400px;"></div>
+</body>
+</html>

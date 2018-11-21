@@ -1,0 +1,10 @@
+{% extends 'base.html' %}
+{% block body %}
+<form action="" method="POST" enctype="mutlipart/form-data">
+	{% csrf_token %}
+	{% include 'sensors/form-template.html'%}
+        <div class="col-sm-offset-0 col-sm-12">
+			<button type="submit" class="btn btn-info">Submit</button>
+		</div>
+</form>
+{% endblock %}

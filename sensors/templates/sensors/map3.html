@@ -1,0 +1,52 @@
+<html>
+<body>
+
+<section id="contact">
+ <center> <h1>MAP</h1></center>
+  <center><div id="dvMap" style="width: 1200px; height: 500px;"></div></center>
+<!-- Add Google Maps -->
+
+<script src="http://maps.googleapis.com/maps/api/js?key=AIzaSyA-y6Imejvs-LOGEqFPq3dPHpeREmhlN0E &callback=initMap" type="text/javascript"></script><script type="text/javascript">// <![CDATA[
+var markers = [{"title":"Plant1","lat":"13.5482","lng":"80.0002","description":"Plant1: Soil Moisture:{{plant1.soilmoisture}} Actuator State:{{plant1.actuatorstate}} "},{"title":"Plant2","lat":"13.5482","lng":"80.00021","description":"Plant2: Soil Moisture:{{plant2.soilmoisture}} Actuator State:{{plant2.actuatorstate}} "},{"title":"WEATHER","lat":"13.54821","lng":"80.00021","description":"TEMPERATURE:{{plant1.temperature}}*C HUMIDITY:{{plant1.humidity}}% RAINFALL:{{plant1.rainfall}}"},{"title":"Water body","lat":"13.54821","lng":"80.00023","description":"Percentage of water consumed:{{plant1.waterlevel}}% "}];
+
+
+
+window.onload = function () {
+var mapOptions = {
+center: new google.maps.LatLng(markers[0].lat, markers[0].lng),
+zoom: 10,
+mapTypeId: google.maps.MapTypeId.ROADMAP
+};
+var map = new google.maps.Map(document.getElementById("dvMap"), mapOptions);
+var infoWindow = new google.maps.InfoWindow();
+var lat_lng = new Array();
+var latlngbounds = new google.maps.LatLngBounds();
+for (i = 0; i < markers.length; i++) {
+var data = markers[i]
+var myLatlng = new google.maps.LatLng(data.lat, data.lng);
+lat_lng.push(myLatlng);
+var marker = new google.maps.Marker({
+position: myLatlng,
+map: map,
+title: data.title
+});
+latlngbounds.extend(marker.position);
+(function (marker, data) {
+google.maps.event.addListener(marker, "click", function (e) {
+infoWindow.setContent(data.description);
+infoWindow.open(map, marker);
+});
+})(marker, data);
+}
+map.setCenter(latlngbounds.getCenter());
+map.fitBounds(latlngbounds);
+
+}
+
+</script>
+<div >
+
+    <!--<div id="map" style="width: 1540px; height: 400px;">   
+    </div>-->
+ </html> 
+</body> 

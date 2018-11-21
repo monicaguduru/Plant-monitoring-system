@@ -1,0 +1,264 @@
+{% load staticfiles %}
+<!DOCTYPE html>
+<html>
+<head>
+<style>
+
+.body{
+    background-size: 100% 100%;
+}
+.button1 {
+    background-color: #008be8;/* Green */
+    border: none;
+    color: white;
+    padding: 16px 32px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    margin: 4px 2px;
+    -webkit-transition-duration: 0.4s; /* Safari */
+    transition-duration: 0.4s;
+    cursor: pointer;
+}
+
+
+
+.button2 {
+    background-color: white;
+    color: black;
+    border: 2px solid #008CBA;
+}
+
+.button2:hover {
+    background-color: #008CBA;
+    color: white;
+}
+
+
+.button {
+  display: inline-block;
+  padding: 15px 25px;
+  font-size: 24px;
+  cursor: pointer;
+  text-align: center;
+  text-decoration: none;
+  outline: none;
+  color: #fff;
+  background-color: #008cba;
+  border: none;
+  border-radius: 15px;
+  box-shadow: 0 9px #999;
+}
+
+.button:hover {background-color: #008cba}
+
+.button:active {
+  background-color: #3e8e41;
+  box-shadow: 0 5px #666;
+  transform: translateY(4px);
+}
+
+div {
+
+    width: 500px;
+    border: 5px solid black;
+    padding: 25px;
+
+
+    position: absolute;
+    margin: -100px 0 0 -200px;
+    top: 20%;
+    left: 43%;
+}
+body{
+	background-image:url('background.png');
+}
+
+</style>
+</head>
+<body background="{% static 'sensors/images/rainwater.gif' %}">
+
+<script>
+
+function function3(){
+    var x = document.getElementById("d3");
+    var y = document.getElementById("d4");
+
+        x.style.display = "block";
+        y.style.display = "none";
+
+
+
+}
+</script>
+<script>
+
+function function4(){
+    var x = document.getElementById("d3");
+    var y = document.getElementById("d4");
+
+    	x.style.display = "none";
+        y.style.display = "block";
+
+
+
+}
+</script>
+
+<script>
+
+
+function function1(){
+
+
+    var x = document.getElementById("xd");
+    var y = document.getElementById("xd1");
+
+        x.style.display = "block";
+        y.style.display = "none";
+
+
+
+}
+</script>
+<script>
+
+function function2(){
+
+    var x = document.getElementById("xd1");
+    var y = document.getElementById("xd");
+
+    	x.style.display = "block";
+        y.style.display = "none";
+
+
+
+}
+</script>
+<script>
+
+function fun(){
+
+    var x = document.getElementById("c");
+    var y = document.getElementById("c1");
+    var z = document.getElementById("c2");
+    var y1 = document.getElementById("d1");
+    var z1 = document.getElementById("d");
+    var y3 = document.getElementById("d3");
+    var z3 = document.getElementById("d4");
+
+        x.style.display = "block";
+        y.style.display = "none";
+        z.style.display = "none";
+        y1.style.display = "none";
+        z1.style.display = "none";
+        y3.style.display = "none";
+        z3.style.display = "none";
+
+
+
+}
+</script>
+<script>
+
+function fun1(){
+
+    var x = document.getElementById("c1");
+    var y = document.getElementById("c");
+    var z = document.getElementById("c2");
+
+    	x.style.display = "block";
+        y.style.display = "none";
+      z.style.display = "block";
+
+}
+</script>
+<script>
+function funrain(){
+
+    var x = document.getElementById("r1");
+    var y = document.getElementById("r2");
+    var z = document.getElementById("dg2");
+
+    	x.style.display = "block";
+        y.style.display = "none";
+        z.style.display = "none";
+
+}
+</script>
+<script>
+function funrain1(){
+    var x = document.getElementById("r2");
+    var y = document.getElementById("r1");
+    var z = document.getElementById("dg2");
+
+    	x.style.display = "block";
+    	z.style.display = "block";
+        y.style.display = "none";
+}
+</script>
+<script>
+function functionrain1(){
+
+    var x = document.getElementById("rd");
+    var y = document.getElementById("rd1");
+
+
+    	x.style.display = "block";
+        y.style.display = "none";
+
+
+}
+</script>
+<script>
+function functionrain2(){
+    var x = document.getElementById("rd1");
+    var y = document.getElementById("rd");
+
+
+    	x.style.display = "block";
+    	y.style.display = "none";
+
+}
+</script>
+
+<body>
+<div class="centered" style="background-image: url({% static 'sensors/images/set.jpg' %})">
+
+<center><h2><u><i>CONTROLLER</i></u></h2><a href="/sensors/display/set/0.0/" target="_blank"><button onclick="fun()" class="button1 button2">Auto</button></a>
+
+<a href="/sensors/display/set/1.0/" target="_blank"><button onclick="fun1()" class="button1 button2">Manual</button></a>
+<h1 id="c" style="display:block">Auto mode</h1>
+<h1 id="c1" style="display:none">Manual mode</h1>
+<h3 id="c2" style="display:none">
+<br>Plant1
+
+
+<a href="/sensors/display/set/101.0/" target="_blank"><button class="button" onclick="function1()">Turn on</button></a>
+<a href="/sensors/display/set/100.0/" target="_blank"><button class="button" onclick="function2()">Turn off</button></a><br>
+
+<i id="xd" style="display:none" ><br>Actuator turned on</i>
+<i id="xd1" style="display:none"><br>Actuator turned off</i><br>
+Plant2
+<a href="/sensors/display/set/111.0/" target="_blank"><button class="button" onclick="function3()">Turn on</button></a>
+<a href="/sensors/display/set/110.0/" target="_blank"><button class="button" onclick="function4()">Turn off</button></a><br>
+<i id="d3" style="display:none"><br>Actuator turned on</i>
+<i id="d4" style="display:none"><br>Actuator turned off</i></h3>
+<h1><u>{{ plant1.msdisplay }}</u></h1>
+<h1> Rain - Water Transfer</h1>
+<a href="/sensors/display/set/031.0/" target="_blank"><button onclick="funrain()" class="button1 button2">Auto</button></a>
+
+<a href="/sensors/display/set/03.0/" target="_blank"><button onclick="funrain1()" class="button1 button2">Manual</button></a>
+<h1 id="r1" style="display:block">Auto mode</h1>
+<h1 id="r2" style="display:none">Manual mode</h1>
+<h2 id="dg2" style="display:none">
+<a href="/sensors/display/set/03.1/" target="_blank"><button class="button" onclick="functionrain1()">Turn on</button></a>
+<a href="/sensors/display/set/03.2/" target="_blank"><button class="button" onclick="functionrain2()">Turn off</button></a><br>
+<i id="rd" style="display:none" ><br>Actuator turned on</i>
+<i id="rd1" style="display:none"><br>Actuator turned off</i><br><h3></center></div>
+
+
+</body>
+</html>
+

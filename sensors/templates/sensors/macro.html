@@ -1,0 +1,304 @@
+<html>
+<head>
+<style>
+body{
+  /*background: #36394B;*/
+   background-color: #000000;
+    background-size: 1800px 1200px;
+  /*background: 1.jpeg;*/
+  height: 100%;
+}
+
+#container_1{
+  margin: 0 auto;
+  padding-top: 2%;
+}
+
+#container_2{
+  margin: 0 auto;
+  padding-top: 2%;
+}
+
+
+#container_4{
+  margin: 0 auto;
+  padding-top: 2%;
+}
+</style>
+<script type="text/javascript">
+
+
+
+function start() {
+    call_1();
+    call_2();
+    //call_3();
+    call_4();
+  }
+function call_1(){
+var count=0;
+var a=[0,0,0,0,0,0,0,0,0,0];
+    {% for i in x %}
+        a[count]={{i.humidity}}
+        count++;
+    {% endfor %}
+    var dps_1=[Number(a[0]),Number(a[1]),Number(a[2]),Number(a[3]),Number(a[4]),Number(a[5]),Number(a[6]),Number(a[7]),Number(a[8]),Number(a[9])];
+   // var dps_1=[10, 20, 50, 40, 20, 10, 25];
+$(function () {
+  Highcharts.setOptions({
+    colors: ['#67BCE6'],
+    chart: {
+        style: {
+            fontFamily: 'sans-serif',
+            color: '#fff'
+        }
+    }
+});
+  $('#container_1').highcharts({
+        chart: {
+            type: 'line',
+            backgroundColor: '#000000'//color behnd the graph
+        },
+        title: {
+            text: 'HUMIDITY',
+            style: {
+              color: '#fff'
+            }
+        },
+        xAxis: {
+            tickWidth: 0,
+            labels: {
+              style: {
+                  color: '#fff',
+                 }
+              },
+            categories: ['1', '2', '3', '4', '5', '6', '7','8','9','10']
+        },
+        yAxis: {
+           gridLineWidth: .5,
+         // gridLineDashStyle: 'dash',
+          gridLineColor: 'black',
+           title: {
+                text: '',
+                style: {
+                  color: '#fff',
+                 }
+            },
+            labels: {
+              formatter: function() {
+                        return Highcharts.numberFormat(this.value, 0, '', ',');
+                    },
+              style: {
+                  color: '#fff',
+                 }
+              }
+
+            },
+        legend: {
+            enabled: false,
+        },
+        credits: {
+            enabled: false
+        },
+        tooltip: {
+           valuePrefix: '',
+           valueSuffix:'%'
+        },
+        plotOptions: {
+          column: {
+            borderRadius: 2,
+             pointPadding: 0,
+            groupPadding: 0.1
+            }
+        },
+        series: [{
+            name: 'HUMIDITY',
+            data: dps_1
+        }]
+    });
+});}
+
+function call_2(){
+var count=0;
+var a=[0,0,0,0,0,0,0,0,0,0];
+    {% for i in x %}
+        a[count]={{i.temperature}}
+        count++;
+    {% endfor %}
+    var dps_2=[Number(a[0]),Number(a[1]),Number(a[2]),Number(a[3]),Number(a[4]),Number(a[5]),Number(a[6]),Number(a[7]),Number(a[8]),Number(a[9])];
+    //var dps_2=[10, 20, 50, 40, 20, 10, 25];
+$(function () {
+  Highcharts.setOptions({
+    colors: ['#67BCE6'],
+    chart: {
+        style: {
+            fontFamily: 'sans-serif',
+            color: '#fff'
+        }
+    }
+});
+  $('#container_2').highcharts({
+        chart: {
+            type: 'line',
+            backgroundColor: '#000000'//color behnd the graph
+        },
+        title: {
+            text: 'TEMPERATURE',
+            style: {
+              color: '#fff'
+            }
+        },
+        xAxis: {
+            tickWidth: 0,
+            labels: {
+              style: {
+                  color: '#fff',
+                 }
+              },
+            categories: ['1', '2', '3', '4', '5', '6', '7','8','9','10']
+        },
+        yAxis: {
+           gridLineWidth: .5,
+         // gridLineDashStyle: 'dash',
+          gridLineColor: 'black',
+           title: {
+                text: '',
+                style: {
+                  color: '#fff',
+                 }
+            },
+            labels: {
+              formatter: function() {
+                        return Highcharts.numberFormat(this.value, 0, '', ',');
+                    },
+              style: {
+                  color: '#fff',
+                 }
+              }
+
+            },
+        legend: {
+            enabled: false,
+        },
+        credits: {
+            enabled: false
+        },
+        tooltip: {
+           valuePrefix: '',
+           valueSuffix:'*C'
+        },
+        plotOptions: {
+          column: {
+            borderRadius: 2,
+             pointPadding: 0,
+            groupPadding: 0.1
+            }
+        },
+        series: [{
+            name: 'TEMPERATURE',
+            data: dps_2
+        }]
+    });
+});}
+
+
+
+function call_4(){
+var count=0;
+var a=[0,0,0,0,0,0,0,0,0,0];
+    {% for i in x %}
+        a[count]={{i.waterlevel}}
+        count++;
+    {% endfor %}
+    var dps_4=[Number(a[0]),Number(a[1]),Number(a[2]),Number(a[3]),Number(a[4]),Number(a[5]),Number(a[6]),Number(a[7]),Number(a[8]),Number(a[9])];
+   // var dps_4=[10, 20, 50, 40, 20, 10, 25];
+$(function () {
+  Highcharts.setOptions({
+    colors: ['#67BCE6'],
+    chart: {
+        style: {
+            fontFamily: 'sans-serif',
+            color: '#fff'
+        }
+    }
+});
+  $('#container_4').highcharts({
+        chart: {
+            type: 'line',
+            backgroundColor: '#000000'//color behnd the graph
+        },
+        title: {
+            text: 'WATER-LEVEL',
+            style: {
+              color: '#fff'
+            }
+        },
+        xAxis: {
+            tickWidth: 0,
+            labels: {
+              style: {
+                  color: '#fff',
+                 }
+              },
+            categories: ['1', '2', '3', '4', '5', '6', '7','8','9','10']
+        },
+        yAxis: {
+           gridLineWidth: .5,
+         // gridLineDashStyle: 'dash',
+          gridLineColor: 'black',
+           title: {
+                text: '',
+                style: {
+                  color: '#fff',
+                 }
+            },
+            labels: {
+              formatter: function() {
+                        return Highcharts.numberFormat(this.value, 0, '', ',');
+                    },
+              style: {
+                  color: '#fff',
+                 }
+              }
+
+            },
+        legend: {
+            enabled: false,
+        },
+        credits: {
+            enabled: false
+        },
+        tooltip: {
+           valuePrefix: '',
+           valueSuffix:'cm'
+        },
+        plotOptions: {
+          column: {
+            borderRadius: 2,
+             pointPadding: 0,
+            groupPadding: 0.1
+            }
+        },
+        series: [{
+            name: 'Water_level',
+            data: dps_4
+        }]
+    });
+});}
+</script>
+</script>
+</head>
+<body onload="start();">
+
+<center><h2 style="color:#FFF">MACRO CONDITIONS</h2></center>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.8.2/jquery.min.js"></script>
+<script src="https://code.highcharts.com/highcharts.js"></script>
+
+<div id="container_1" style="width:50%; height:400px;"></div>
+
+<div id="container_2" style="width:50%; height:400px;"></div>
+
+
+<div id="container_4" style="width:50%; height:400px;"></div>
+</body>
+</html>
